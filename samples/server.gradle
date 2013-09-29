@@ -1,0 +1,29 @@
+repositories {
+    mavenCentral()
+    maven {
+        url uri('http://ogaclejapan.github.com/dotapk')
+    }
+}
+
+configurations {
+    dotapkWar
+}
+
+dependencies {
+    dotapkWar "com.ogaclejapan:dotapk:1.0@war"
+}
+
+apply plugin: 'jetty'
+
+import org.gradle.api.plugins.jetty.JettyRunWar
+
+task runDotApk(type: JettyRunWar) {
+    webApp = configurations.dotapkWar.singleFile
+    httpPort = 18080
+    contextPath = 'dotapk'
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.6'
+}
+

@@ -1,0 +1,26 @@
+buildscript {
+    repositories {
+    	mavenCentral()
+        maven {
+            url uri('http://ogaclejapan.github.com/dotapk')
+        }
+    }
+    dependencies {
+        classpath group: 'com.ogaclejapan', name: 'gradle-dotapk-plugin', version: '1.0'
+    }
+}
+
+apply plugin: 'dotapk'
+
+dotapk {
+	repositories {
+		local {
+			url = 'http://localhost:8080/dotapk'
+		}
+	}
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = '1.6'
+}
+
