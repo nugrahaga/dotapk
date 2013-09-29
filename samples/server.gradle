@@ -19,7 +19,7 @@ import org.gradle.api.plugins.jetty.JettyRunWar
 
 task runDotApk(type: JettyRunWar) {
     webApp = configurations.dotapkWar.singleFile
-    httpPort = 18080
+    httpPort = 8080
     contextPath = 'dotapk'
 }
 
